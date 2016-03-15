@@ -86,7 +86,7 @@ function storeValues(form)
 // Original JavaScript code by Chirp Internet: www.chirp.com.au
 // Please acknowledge use of this code by including this header.
 var today = new Date();
-var expiry = new Date(today.getTime() + 100 * 24 * 3600 * 1000); // plus 100 days
+var expiry = new Date(today.getTime() + 1000 * 24 * 3600 * 1000); // plus 1000 days
 function setCookie(name, value)
 {
   document.cookie=name + "=" + escape(value) + "; path=/; expires=" + expiry.toGMTString();
