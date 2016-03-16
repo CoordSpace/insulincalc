@@ -1,22 +1,21 @@
 window.onload=function(){
-
   // after page load, grab all the constants from the page's cookies
-  // if any of them are not-present, run the lockdown function and quit out
-  if(a = getCookie("targetBloodSugar")) {
+  // if any of them are not present, run the lockdown function and quit out
+  if(a = Cookies.get("targetBloodSugar")) {
     document.constants.targetBloodSugar.value = a;
   }
   else {
     initial_alert();
     return;
   }
-  if(b = getCookie("correctionFactor")) {
+  if(b = Cookies.get("correctionFactor")) {
     document.constants.correctionFactor.value = b;
   }
   else {
     initial_alert();
     return;
   }
-  if(c = getCookie("insulinCarbRatio")) {
+  if(c = Cookies.get("insulinCarbRatio")) {
     document.constants.insulinCarbRatio.value = c;
   }
   else {
@@ -48,13 +47,13 @@ function calculate_units (form) {
   var insulinCarbRatio = document.constants.insulinCarbRatio.value;
 
   // calculate the units needed for a meal
-  mealUnits = mealCarbs / insulinCarbRatio;
+  var mealUnits = mealCarbs / insulinCarbRatio;
 
-  // calculate the nominal adjustment units
-  correctionUnits = (currentBloodSugar - targetBloodSugar) / correctionFactor;
+  // calculate the correction adjustment units
+  var correctionUnits = (currentBloodSugar - targetBloodSugar) / correctionFactor;
 
   // add them together to get the final value as a float
-  finalUnits = mealUnits + correctionUnits;
+  var finalUnits = mealUnits + correctionUnits;
 
   // get the DOM elements for the final value display
   var decimal = document.getElementById('decimal');
@@ -63,6 +62,8 @@ function calculate_units (form) {
   rounded.textContent = hospital_rounding(finalUnits);
 }
 
+// Round the decimal value calculated to the nearest half-value.
+// This is the recommended method of rounding as shown in the worksheet source.
 function hospital_rounding(units){
   // get just the decimal part of the units value
   fraction = units % 1;
@@ -73,29 +74,15 @@ function hospital_rounding(units){
 
 function storeValues(form)
 {
-  setCookie("targetBloodSugar", form.targetBloodSugar.value);
-  setCookie("correctionFactor", form.correctionFactor.value);
-  setCookie("insulinCarbRatio", form.insulinCarbRatio.value);
+  // Lets try a solid jquery plugin and see if it helps with Apple's stupid full
+  // screen app data persistence decisions. I swear Tim Cook hates me.
+  Cookies.set('targetBloodSugar', form.targetBloodSugar.value, { expires: 10000 });
+  Cookies.set('correctionFactor', form.correctionFactor.value, { expires: 10000 });
+  Cookies.set('insulinCarbRatio', form.insulinCarbRatio.value, { expires: 10000 });
+
   // remove all the alerts, focus coloring, and enable the top form
   document.getElementById("input_set").disabled = false;
   document.getElementById("settings").className = "panel-default";
   document.getElementById("alert").className = "alert alert-danger hidden";
   return true;
-}
-
-// Original JavaScript code by Chirp Internet: www.chirp.com.au
-// Please acknowledge use of this code by including this header.
-var today = new Date();
-var expiry = new Date(today.getTime() + 1000 * 24 * 3600 * 1000); // plus 1000 days
-function setCookie(name, value)
-{
-  document.cookie=name + "=" + escape(value) + "; path=/; expires=" + expiry.toGMTString();
-}
-
-
-function getCookie(name)
-{
-  var re = new RegExp(name + "=([^;]+)");
-  var value = re.exec(document.cookie);
-  return (value != null) ? unescape(value[1]) : null;
 }
