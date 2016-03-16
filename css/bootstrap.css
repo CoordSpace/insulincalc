@@ -16,18 +16,25 @@ html {
       -ms-text-size-adjust: 100%;
 }
 body {
-  margin: 0;
+  margin:0;
+  padding:0;
+  height:100%;
 }
 #footer {
-    clear: both;
-    position: relative;
-    z-index: 10;
-    height: 3em;
-    margin-top: -3em;
+   position:absolute;
+   bottom:0;
+   width:100%;
+   height:32px;   /* Height of the footer */
+   background:#6cf;
 }
-.img-footer{
+#container {
+   min-height:100%;
+   position:relative;
+}
+.right-footer{
     position: absolute;
-    right:0;
+    right:0.1em;
+    bottom:0.1em;
 }
 article,
 aside,

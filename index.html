@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <title>Insulin Units Calculator</title>
-
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <!-- Bootstrap -->
   <link href="css/bootstrap.css" rel="stylesheet">
 
@@ -17,106 +17,106 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
-<body>
-  <div class="panel-primary">
+<div id="container">
+  <body>
+    <div class="panel-primary">
 
-    <div class="panel-heading">
-      <h3 class="panel-title">Insulin Units Calculator</h3>
+      <div class="panel-heading">
+        <h3 class="panel-title">Insulin Units Calculator</h3>
+      </div>
+
+      <div class="panel-body">
+        <form name="inputs">
+          <fieldset id="input_set">
+            <div class="form-group">
+              <label for="currentBloodSugar">Current Blood Sugar</label>
+              <div class="input-group">
+                <input type="tel" class="form-control" id="currentBloodSugar" placeholder="120">
+                <span class="input-group-addon">mg/dL</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="mealCarbs">Carbs in Next Meal</label>
+              <div class="input-group">
+                <input type="tel" class="form-control" id="mealCarbs" placeholder="100">
+                <span class="input-group-addon">g</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <button type="button" class="btn btn-default" aria-label="Calculate Units" onclick="calculate_units(this.form)">Calculate</button>
+            </div>
+          </fieldset>
+        </form>
+
+        <div class="alert alert-danger hidden" id="alert"><strong>Please enter all Settings values listed below</strong><span class="caret"></span></div>
+
+        <h3 class="text-center">Recommended Units</h3>
+        <table id="results" class="table table-bordered center">
+          <tr>
+            <th class="td-align">Rounded</th>
+            <th class="td-align">Decimal</th>
+          </tr>
+          <tr>
+            <td class="td-align">
+              <p class="results" id="rounded">00</p>
+            </td>
+            <td class="td-align">
+              <p class="results" id="decimal">00</p>
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
 
-    <div class="panel-body">
-      <form name="inputs">
-        <fieldset id="input_set">
+    <div class="panel-default" id="settings">
+
+      <div class="panel-heading">
+        <h3 class="panel-title">Settings</h3>
+      </div>
+
+      <div class="panel-body">
+
+        <form name="constants">
           <div class="form-group">
-            <label for="currentBloodSugar">Current Blood Sugar</label>
+            <label for="targetBloodSugar">Target Blood Sugar</label>
             <div class="input-group">
-              <input type="tel" class="form-control" id="currentBloodSugar" placeholder="120">
+              <input type="tel" class="form-control" id="targetBloodSugar" placeholder="130">
               <span class="input-group-addon">mg/dL</span>
             </div>
           </div>
 
           <div class="form-group">
-            <label for="mealCarbs">Carbs in Next Meal</label>
+            <label for="correctionFactor">Correction Factor</label>
             <div class="input-group">
-              <input type="tel" class="form-control" id="mealCarbs" placeholder="100">
-              <span class="input-group-addon">g</span>
+              <input type="tel" class="form-control" id="correctionFactor" placeholder="130">
+              <span class="input-group-addon">mg/dL</span>
             </div>
           </div>
 
           <div class="form-group">
-            <button type="button" class="btn btn-default" aria-label="Calculate Units" onclick="calculate_units(this.form)">Calculate</button>
+            <label for="insulinCarbRatio">Insulin-To-Carb Ratio</label>
+            <div class="input-group">
+              <input type="tel" class="form-control" id="insulinCarbRatio" placeholder="35">
+              <span class="input-group-addon">g</span>
+            </div>
           </div>
-        </fieldset>
-      </form>
-
-      <div class="alert alert-danger hidden" id="alert"><strong>Please enter all setting values listed below</strong><span class="caret"></span></div>
-
-      <h3 class="text-center">Recommended Units</h3>
-      <table id="results" class="table table-bordered center">
-        <tr>
-          <th class="td-align">Rounded</th>
-          <th class="td-align">Decimal</th>
-        </tr>
-        <tr>
-          <td class="td-align">
-            <p class="results" id="rounded">00</p>
-          </td>
-          <td class="td-align">
-            <p class="results" id="decimal">00</p>
-          </td>
-        </tr>
-      </table>
+          <div class="form-group">
+            <button type="button" class="btn btn-default" aria-label="Update Constants" onclick="storeValues(this.form)">Update</button>
+          </div>
+        </form>
+      </div>
     </div>
-  </div>
-
-  <div class="panel-default" id="settings">
-
-    <div class="panel-heading">
-      <h3 class="panel-title">Settings</h3>
-    </div>
-
-    <div class="panel-body">
-
-      <form name="constants">
-        <div class="form-group">
-          <label for="targetBloodSugar">Target Blood Sugar</label>
-          <div class="input-group">
-            <input type="tel" class="form-control" id="targetBloodSugar" placeholder="130">
-            <span class="input-group-addon">mg/dL</span>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="correctionFactor">Correction Factor</label>
-          <div class="input-group">
-            <input type="tel" class="form-control" id="correctionFactor" placeholder="130">
-            <span class="input-group-addon">mg/dL</span>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="insulinCarbRatio">Insulin-To-Carb Ratio</label>
-          <div class="input-group">
-            <input type="tel" class="form-control" id="insulinCarbRatio" placeholder="35">
-            <span class="input-group-addon">g</span>
-          </div>
-        </div>
-        <div class="form-group">
-          <button type="button" class="btn btn-default" aria-label="Update Constants" onclick="storeValues(this.form)">Update</button>
-        </div>
-      </form>
-    </div>
-  </div>
-  <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/js.cookie.js"></script>
-  <script src="js/main.js"></script>
-</body>
-<footer>
-  <a href="https://github.com/cwearley/insulincalc">
-    <img src="img/blacktocat-32.png" class="img-footer" alt="Click here for the project page.">
-  </a>
-</footer>
+    <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/js.cookie.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+  <footer>
+     <a class="right-footer label label-default" href="https://github.com/cwearley/insulincalc/blob/gh-pages/README.md">Usage and Disclaimer Info</a>
+  </footer>
+</div>
 </html>
