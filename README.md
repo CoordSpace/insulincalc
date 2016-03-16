@@ -1,6 +1,8 @@
 # Insulin Unit Calculator
 A simple mobile-focused web interface for calculating short-acting insulin doses in accordance with basal-bolus insulin dosing equations as defined in the research articles and worksheets sourced below.
 
+The app can be accessed in your browser at: <strong> [cwearley.github.io/insulincalc](http://cwearley.github.io/insulincalc/) </strong>
+
 # <strong> WARNING </strong>
 
 Although this app is using a widely-known, simple, and oft-used equation to calculate insulin dosages, this app was in no way developed under the active-guidance of a medical professional. I (Chris Earley) have tested the app under numerous conditions but I will in no way be responsible for any negative health effects this app may cause.
