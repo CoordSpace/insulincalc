@@ -74,15 +74,29 @@ function hospital_rounding(units){
 
 function storeValues(form)
 {
-  // Lets try a solid jquery plugin and see if it helps with Apple's stupid full
-  // screen app data persistence decisions. I swear Tim Cook hates me.
-  Cookies.set('targetBloodSugar', form.targetBloodSugar.value, { expires: 10000 });
-  Cookies.set('correctionFactor', form.correctionFactor.value, { expires: 10000 });
-  Cookies.set('insulinCarbRatio', form.insulinCarbRatio.value, { expires: 10000 });
+  var targetBloodSugar = form.targetBloodSugar.value;
+  var correctionFactor = form.correctionFactor.value;
+  var insulinCarbRatio = form.insulinCarbRatio.value;
 
-  // remove all the alerts, focus coloring, and enable the top form
-  document.getElementById("input_set").disabled = false;
-  document.getElementById("settings").className = "panel-default";
-  document.getElementById("alert").className = "alert alert-danger hidden";
-  return true;
+  // check that all the values have been input and are valid!
+  if(isNumber(targetBloodSugar) && isNumber(correctionFactor) && isNumber(insulinCarbRatio)){
+    // remove all the alerts, focus coloring, and enable the top form
+    document.getElementById("input_set").disabled = false;
+    document.getElementById("settings").className = "panel-default";
+    document.getElementById("alert").className = "alert alert-danger hidden";
+    // Lets try a solid jquery plugin and see if it helps with Apple's stupid full
+    // screen app data persistence decisions. I swear Tim Cook hates me.
+    Cookies.set('targetBloodSugar', form.targetBloodSugar.value, { expires: 10000 });
+    Cookies.set('correctionFactor', form.correctionFactor.value, { expires: 10000 });
+    Cookies.set('insulinCarbRatio', form.insulinCarbRatio.value, { expires: 10000 });
+    return true;
+  }
+  else {
+    initial_alert();
+    return false;
+  }
+}
+// Fantastic little check from http://stackoverflow.com/a/1421988
+function isNumber (o) {
+  return ! isNaN (o-0) && o !== null && o !== "" && o !== false;
 }
