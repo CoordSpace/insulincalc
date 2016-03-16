@@ -35,15 +35,15 @@ The steps needed to calculate a patient's insulin units before a meal are in two
 
 First the total grams of carbohydrates in the upcoming meal and the physician-specified insulin-to-carb ratio are used to calculate the units of insulin needed for food.
 
-![Food Dose](http://www.sciweavers.org/tex2img.php?eq=%20Insulin%5C%20Dose_%7B%28food%29%7D%20%3D%20%5Cfrac%7BCarbs%5C%20in%5C%20Next%5C%20Meal%7D%7BInsulin%5C%20to%5C%20Carb%5C%20Ratio%7D&bc=white&fc=Black&im=jpg&fs=12&ff=arev&edit=0)
+![Food Dose](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cfn_phv%20Insulin%5C%20Dose_%7B%28food%29%7D%5C%20%3D%5C%20%5Cfrac%7BCarbs%5C%20in%5C%20Next%5C%20Meal%7D%7BInsulin%5C%20to%5C%20Carb%5C%20Ratio%7D)
 
 Then the patient's current blood sugar levels, target blood sugar, and physician-specified correction factor are used to calculate the correction units of insulin needed to reach their target blood sugar.
 
-![Correction Dose](http://www.sciweavers.org/tex2img.php?eq=Insulin\%20Dose_{%28Correction%29}%20%3D%20\frac{Current\%20Blood\%20Sugar\%20-\%20Target\%20Blood\%20Sugar}{Correction\%20Factor}&bc=white&fc=Black&im=jpg&fs=12&ff=arev&edit=0)
+![Correction Dose](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cfn_phv%20Insulin%5C%20Dose_%7B%28correction%29%7D%5C%20%3D%5C%20%5Cfrac%7BCurrent%5C%20Blood%5C%20Sugar%5C%20-%5C%20Target%5C%20Blood%5C%20Sugar%7D%7BCorrection%5C%20Factor%7D)
 
 With those two values known, they are summed together to yield the total amount of insulin dosing units needed.
 
-![Total Dose](http://www.sciweavers.org/tex2img.php?eq=Insulin%5C%20Dose_%7B%28total%29%7D%20%3D%20Insulin%5C%20Dose_%7B%28food%29%7D%20%2B%20Insulin%5C%20Dose_%7B%28correction%29%7D&bc=white&fc=Black&im=jpg&fs=12&ff=arev&edit=0)
+![Total Dose](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cfn_phv%20Insulin%5C%20Dose_%7B%28total%29%7D%20%3D%20Insulin%5C%20Dose_%7B%28food%29%7D%20&plus;%20Insulin%5C%20Dose_%7B%28correction%29%7D)
 
 ## Technologies used
 
