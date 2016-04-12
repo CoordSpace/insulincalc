@@ -1,6 +1,6 @@
 window.onload = function () {
   if (typeof (Storage) !== 'undefined') {
-    //reset the variable inputs
+    // reset the variable inputs
     document.getElementById('mealCarbs').value = ''
     document.getElementById('currentBloodSugar').value = ''
     // Code for localStorage/sessionStorage.
@@ -114,9 +114,9 @@ function initial_alert () {
 
 function calculate_units () {
   // grab the current user input values, they should be all filled out now
-  var insulinCarbRatio = localStorage.getItem("insulinCarbRatio")
-  var correctionFactor = localStorage.getItem("correctionFactor")
-  var targetBloodSugar = localStorage.getItem("targetBloodSugar")
+  var insulinCarbRatio = localStorage.getItem('insulinCarbRatio')
+  var correctionFactor = localStorage.getItem('correctionFactor')
+  var targetBloodSugar = localStorage.getItem('targetBloodSugar')
   var mealCarbs = document.getElementById('mealCarbs').value
   var currentBloodSugar = document.getElementById('currentBloodSugar').value
 
