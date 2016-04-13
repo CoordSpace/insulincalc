@@ -5,6 +5,10 @@
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
+input[type=”text”]:focus, input[type=”text”]:hover {
+font-size: 16px; /* Adding 16px on focus/hover will prevent page zoom */
+}
+
 p.results {
   font-size: 3em;
   font-weight: bold;

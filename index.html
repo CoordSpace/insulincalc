@@ -33,7 +33,7 @@
             <div class="form-group">
               <label for="currentBloodSugar">Current Blood Sugar</label>
               <div class="input-group">
-                <input type="tel" class="form-control var-input" oninput="variableInput()" id="currentBloodSugar" placeholder="0">
+                <input type="tel" class="form-control var-input" onblur="variableInput()" id="currentBloodSugar" placeholder="0">
                 <span class="input-group-addon">mg/dL</span>
               </div>
             </div>
@@ -41,7 +41,7 @@
             <div class="form-group">
               <label for="mealCarbs">Carbs in Next Meal</label>
               <div class="input-group">
-                <input type="tel" class="form-control var-input" oninput="variableInput()" id="mealCarbs" placeholder="0">
+                <input type="tel" class="form-control var-input" onblur="variableInput()" id="mealCarbs" placeholder="0">
                 <span class="input-group-addon">g</span>
               </div>
             </div>
@@ -81,7 +81,7 @@
             <div class="form-group">
               <label for="targetBloodSugar">Target Blood Sugar</label>
               <div class="input-group">
-                <input type="tel" class="form-control const-input" oninput="storeConst()" id="targetBloodSugar" placeholder="">
+                <input type="tel" class="form-control const-input" onblur="storeConst()" id="targetBloodSugar" placeholder="">
                 <span class="input-group-addon">mg/dL</span>
               </div>
             </div>
@@ -89,7 +89,7 @@
             <div class="form-group">
               <label for="correctionFactor">Correction Factor</label>
               <div class="input-group">
-                <input type="tel" class="form-control const-input" oninput="storeConst()" id="correctionFactor" placeholder="">
+                <input type="tel" class="form-control const-input" onblur="storeConst()" id="correctionFactor" placeholder="">
                 <span class="input-group-addon">mg/dL</span>
               </div>
             </div>
@@ -97,7 +97,7 @@
             <div class="form-group">
               <label for="insulinCarbRatio">Insulin-To-Carb Ratio</label>
               <div class="input-group">
-                <input type="number" class="form-control const-input" oninput="storeConst()" id="insulinCarbRatio" placeholder="">
+                <input type="number" class="form-control const-input" onblur="storeConst()" id="insulinCarbRatio" placeholder="">
                 <span class="input-group-addon">g</span>
               </div>
             </div>
