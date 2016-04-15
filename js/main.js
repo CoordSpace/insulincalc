@@ -1,5 +1,8 @@
-window.onload = function () {
-  if (typeof (Storage) !== 'undefined') {
+window.onload = init();
+
+function init () {
+  if ('localStorage' in window && window.localStorage !== null) {
+    console.log("onload - localStorage present!");
     // reset the variable inputs
     document.getElementById('mealCarbs').value = '';
     document.getElementById('currentBloodSugar').value = '';
@@ -42,7 +45,7 @@ window.onload = function () {
     container.appendChild(header);
     container.appendChild(noStorageJumbo);
   }
-};
+}
 
 // If the settings values are not present, we need to lock the calc form inputs
 // alert the user and direct their attention to the bottom of the page.
