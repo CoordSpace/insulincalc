@@ -5,9 +5,8 @@ The app can be accessed in your browser at: <strong> [cwearley.github.io/insulin
 
 # <strong> WARNING </strong>
 
-Although this app is using a widely-known, simple, and oft-used equation to calculate insulin dosages, this app was in no way developed under the active-guidance of a medical professional. I (Chris Earley) have tested the app under numerous conditions but I will in no way be responsible for any negative health effects this app may cause.
+Although this app is using a widely-known, simple, and oft-used equation to calculate bolus insulin dosages, this app was in no way developed under the active-guidance of a medical professional. I (Chris Earley) have tested the app under numerous conditions but I will in no way be responsible for any negative health effects this app may cause.
 
-This app was created as a tool for guidance but the user's better judgement should be utilized during every use. If a dosage amount seems low/high, double-check it using the official [Insulin Correction Dose Calculator](http://perinatology.com/calculators/Insulin%20Correction%20Dose.htm) from perinatology.com and/or talk with your physician. If any odd-business occurs, please send in a bug request or tweet me at [@coordspace](https://twitter.com/coordspace) on twitter.
 
 Lastly, it's a good habit to be skeptical of any numbers that are presented by <strong>any and all</strong> medical apps/devices. After all, this is your health we're talking about and machines are not infallible.
 
@@ -16,7 +15,6 @@ Lastly, it's a good habit to be skeptical of any numbers that are presented by <
 #### Setup
 Upon loading the page, you must fill out the fields in the settings section of the interface and press the update button. The values needed should be provided to you by your physician or other relevant healthcare professional.
 
-Upon updating, the values are now stored in a browser cookie and should persist between app uses as long as the cookie remains. You can also update the settings values at any time to match your current health situation.
 
 #### Calculating
 
@@ -48,8 +46,6 @@ With those two values known, they are summed together to yield the total amount 
 ## Technologies used
 
 1. [Bootstrap](http://getbootstrap.com/2.3.2/)
-
-2. [js-cookie jquery plugin](https://github.com/js-cookie/js-cookie)
 
 ## sources
 

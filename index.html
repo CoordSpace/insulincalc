@@ -5,8 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <title>Insulin Units Calculator</title>
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <title>Bolus Insulin Units Calculator</title>
+  <link rel="img/apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="icon" href="img/favicon.png"/>
+  <meta name="theme-color" content="#70a1cc"/>
   <!-- Bootstrap -->
   <link href="css/bootstrap.css" rel="stylesheet">
 
@@ -17,15 +19,15 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
-<div id="container">
-  <body>
+<body>
+  <div id="container-flexible">
     <div class="panel-primary">
 
-      <div class="panel-heading">
+      <div class="panel-heading col-md-4 col-md-offset-4">
         <h3 class="panel-title">Insulin Units Calculator</h3>
       </div>
 
-      <div class="panel-body">
+      <div class="panel-body col-md-4 col-md-offset-4">
         <form name="inputs">
           <fieldset id="input_set">
             <div class="form-group">
@@ -45,7 +47,7 @@
             </div>
 
             <div class="form-group">
-              <button type="button" class="btn btn-default" aria-label="Calculate Units" onclick="calculate_units(this.form)">Calculate</button>
+              <button type="button" class="btn btn-default" aria-label="Calculate Units" onclick="calculate_units()">Calculate</button>
             </div>
           </fieldset>
         </form>
@@ -70,7 +72,7 @@
       </div>
     </div>
 
-    <div class="panel-default" id="settings">
+    <div class="panel-default col-md-4 col-md-offset-4" id="settings">
 
       <div class="panel-heading">
         <h3 class="panel-title">Settings</h3>
@@ -103,7 +105,7 @@
             </div>
           </div>
           <div class="form-group">
-            <button type="button" class="btn btn-default" aria-label="Update Constants" onclick="storeValues(this.form)">Update</button>
+            <button type="button" class="btn btn-default" aria-label="Update Constants" onclick="storeValues()">Update</button>
           </div>
         </form>
       </div>
@@ -112,11 +114,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/js.cookie.js"></script>
     <script src="js/main.js"></script>
-  </body>
+  </div>
+</body>
+
+<div class="col-md-4 col-md-offset-4">
   <footer>
-     <a class="right-footer label label-default" href="https://github.com/cwearley/insulincalc/blob/gh-pages/README.md">Usage and Disclaimer Info</a>
+    <a class="right-footer label label-default" href="https://github.com/cwearley/insulincalc/blob/gh-pages/README.md">Usage and Disclaimer Info</a>
   </footer>
 </div>
 </html>
