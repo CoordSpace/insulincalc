@@ -45,10 +45,62 @@ function init () {
     container.appendChild(header);
     container.appendChild(noStorageJumbo);
   }
+};
+
+// Apple Safari iOS is a strange beast - http://stackoverflow.com/a/22409509
+
+// update the insulin unit calculations if both values are supplied
+function variableInput () {
+  // grab the current user input values
+  // if any of the inputs are empty, just return early
+  var mealCarbs = document.getElementById('mealCarbs').value;
+  var currentBloodSugar = document.getElementById('currentBloodSugar').value;
+  if (currentBloodSugar === '') {
+    return;
+  }
+  if (mealCarbs === '') {
+    return;
+  }
+  // since we know the constants are filled in, we can just go ahread
+  // and calculate the result
+  calculate_units();
 }
 
-// If the settings values are not present, we need to lock the calc form inputs
-// alert the user and direct their attention to the bottom of the page.
+// update all the data stores upon user input
+function storeConst () {
+  // grab the current user input values and store them
+  var insulinCarbRatio = document.getElementById('insulinCarbRatio').value;
+  var correctionFactor = document.getElementById('correctionFactor').value;
+  var targetBloodSugar = document.getElementById('targetBloodSugar').value;
+  window.localStorage.setItem('insulinCarbRatio', insulinCarbRatio);
+  window.localStorage.setItem('correctionFactor', correctionFactor);
+  window.localStorage.setItem('targetBloodSugar', targetBloodSugar);
+  // if any of the inputs are empty, just return early
+  if (insulinCarbRatio === '') {
+    initial_alert();
+    return;
+  }
+  if (correctionFactor === '') {
+    initial_alert();
+    return;
+  }
+  if (targetBloodSugar === '') {
+    initial_alert();
+    return;
+  }
+  // check that all the values have been input and are valid
+  if (isNumber(targetBloodSugar) && isNumber(correctionFactor) && isNumber(insulinCarbRatio)) {
+    // remove all the alerts, focus coloring, and enable the top form
+    document.getElementById('input_set').disabled = false;
+    document.getElementById('settings').className = 'panel-default';
+    document.getElementById('alert').className = 'alert alert-danger hidden';
+    return;
+  } else {
+    initial_alert();
+    return;
+  }
+}
+
 // If the settings values are not present, we need to lock the calc form inputs
 // alert the user and direct their attention to the bottom of the page.
 function initial_alert () {
@@ -62,7 +114,7 @@ function initial_alert () {
   document.getElementById('alert').classList.remove('hidden');
   // make the bottom settings panel red to make the eye follow from the red
   // error alert message
-  document.getElementById('settings').className = 'panel-danger col-md-4 col-md-offset-4';
+  document.getElementById('settings').className = 'panel-danger';
 }
 
 function calculate_units () {
@@ -91,9 +143,9 @@ function calculate_units () {
 
 // Round the decimal value calculated to the nearest half-value.
 // This is the recommended method of rounding as shown in the worksheet source.
-function hospital_rounding(units){
+function hospital_rounding (units) {
   // get just the decimal part of the units value
-  fraction = units % 1;
+  var fraction = units % 1;
   if (fraction < 0.25) return Math.floor(units);
   if (fraction < 0.75) return Math.floor(units) + 0.5;
   return Math.ceil(units);
@@ -135,5 +187,5 @@ function storeValues()
 }
 // Fantastic little check from http://stackoverflow.com/a/1421988
 function isNumber (o) {
-  return ! isNaN (o-0) && o !== null && o !== "" && o !== false;
+  return !isNaN(o - 0) && o !== null && o !== '' && o !== false;
 }

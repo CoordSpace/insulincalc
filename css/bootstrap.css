@@ -5,6 +5,13 @@
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
+input[type='text'],
+input[type='number'],
+input[type='tel'],
+textarea {
+  font-size: 18px;
+}
+
 p.results {
   font-size: 3em;
   font-weight: bold;

@@ -1,9 +1,9 @@
 # Insulin Unit Calculator
 A simple mobile-focused web interface for calculating short-acting insulin doses in accordance with basal-bolus insulin dosing equations as defined in the research articles and worksheets sourced below.
 
-The app can be accessed in your browser at: <strong> [cwearley.github.io/insulincalc](http://cwearley.github.io/insulincalc/) </strong>
+The app can be accessed in your mobile browser at: <strong> [cwearley.github.io/insulincalc](http://cwearley.github.io/insulincalc/) </strong>
 
-# <strong> WARNING </strong>
+# <strong> Obligatory WARNING </strong>
 
 Although this app is using a widely-known, simple, and oft-used equation to calculate bolus insulin dosages, this app was in no way developed under the active-guidance of a medical professional. I (Chris Earley) have tested the app under numerous conditions but I will in no way be responsible for any negative health effects this app may cause.
 
@@ -13,17 +13,19 @@ Lastly, it's a good habit to be skeptical of any numbers that are presented by <
 ## How to use
 
 #### Setup
-Upon loading the page, you must fill out the fields in the settings section of the interface and press the update button. The values needed should be provided to you by your physician or other relevant healthcare professional.
+Upon loading the page, you will find the top inputs disabled and a red warning message telling you to fill out the settings at the bottom of the page. You must fill out these fields before you can use the app. The values requested should be provided to you by your physician or other relevant healthcare professional. Upon updating, the values are now stored in your browser's localStorage and should persist between app uses. You can also update these settings values at any time to match your current health situation.
 
+Once all the fields are filled, the red warnings will vanish and the top inputs will be unlocked for use.
 
 #### Calculating
 
-With the settings constants filled out, you can now return to the top of the page and fill in your current info and press calculate. The current blood sugar and carbs in next meal values are the only things that you'll need to input with each use of the calculator.
+With the settings constants filled out, you can now return to the top of the page and fill in your current info to see the recommended insulin units displayed in the two large text boxes below.
+
+Your current blood sugar and the amount of carbohydrates in your next meal are the only values that you'll need to input with each use of the calculator.
 
 #### Results
 
-Located below the calculate button is the results table showing the total short-acting insulin units you need for your next meal. Displayed is the raw decimal value and a value that has been rounded to the nearest 0.5 units.
-
+Located below the two top inputs is the results table showing the total short-acting insulin units you need for your next meal. Displayed is the raw decimal value and a value that has been rounded to the nearest 0.5 units.
 
 ## Equations
 

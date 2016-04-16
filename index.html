@@ -26,6 +26,7 @@
       <div class="panel-heading col-md-4 col-md-offset-4">
         <h3 class="panel-title">Insulin Units Calculator</h3>
       </div>
+    </div>
 
       <div class="panel-body col-md-4 col-md-offset-4">
         <form name="inputs">
@@ -33,7 +34,7 @@
             <div class="form-group">
               <label for="currentBloodSugar">Current Blood Sugar</label>
               <div class="input-group">
-                <input type="tel" class="form-control" id="currentBloodSugar" placeholder="">
+                <input type="tel" class="form-control var-input" onblur="variableInput()" id="currentBloodSugar" placeholder="0">
                 <span class="input-group-addon">mg/dL</span>
               </div>
             </div>
@@ -41,75 +42,69 @@
             <div class="form-group">
               <label for="mealCarbs">Carbs in Next Meal</label>
               <div class="input-group">
-                <input type="tel" class="form-control" id="mealCarbs" placeholder="">
+                <input type="tel" class="form-control var-input" onblur="variableInput()" id="mealCarbs" placeholder="0">
                 <span class="input-group-addon">g</span>
               </div>
-            </div>
-
-            <div class="form-group">
-              <button type="button" class="btn btn-default" aria-label="Calculate Units" onclick="calculate_units()">Calculate</button>
             </div>
           </fieldset>
         </form>
 
-        <div class="alert alert-danger hidden" id="alert"><strong>Please enter all Settings values listed below</strong><span class="caret"></span></div>
+        <div class="alert alert-danger hidden" id="alert"><strong>Please enter all Settings values listed below</strong>
+          <span class="caret"><!-- --></span></div>
 
-        <h3 class="text-center">Recommended Units</h3>
-        <table id="results" class="table table-bordered center">
-          <tr>
-            <th class="td-align">Rounded</th>
-            <th class="td-align">Decimal</th>
-          </tr>
-          <tr>
-            <td class="td-align">
-              <p class="results" id="rounded">00</p>
-            </td>
-            <td class="td-align">
-              <p class="results" id="decimal">00</p>
-            </td>
-          </tr>
-        </table>
+          <h3 class="text-center">Recommended Units</h3>
+          <table id="results" class="table table-bordered center">
+            <tr>
+              <th class="td-align">Rounded</th>
+              <th class="td-align">Decimal</th>
+            </tr>
+            <tr>
+              <td class="td-align">
+                <p class="results" id="rounded">00</p>
+              </td>
+              <td class="td-align">
+                <p class="results" id="decimal">00</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+
+      <div class="panel-default" id="settings">
+        <div class="panel-heading col-md-4 col-md-offset-4">
+          <h3 class="panel-title">Settings</h3>
+        </div>
       </div>
-    </div>
 
-    <div class="panel-default col-md-4 col-md-offset-4" id="settings">
-
-      <div class="panel-heading">
-        <h3 class="panel-title">Settings</h3>
-      </div>
-
-      <div class="panel-body">
-
-        <form name="constants">
-          <div class="form-group">
-            <label for="targetBloodSugar">Target Blood Sugar</label>
-            <div class="input-group">
-              <input type="tel" class="form-control" id="targetBloodSugar" placeholder="">
-              <span class="input-group-addon">mg/dL</span>
+        <div class="panel-body col-md-4 col-md-offset-4">
+          <form name="constants">
+            <div class="form-group">
+              <label for="targetBloodSugar">Target Blood Sugar</label>
+              <div class="input-group">
+                <input type="tel" class="form-control const-input" onblur="storeConst()" id="targetBloodSugar" placeholder="">
+                <span class="input-group-addon">mg/dL</span>
+              </div>
             </div>
-          </div>
 
-          <div class="form-group">
-            <label for="correctionFactor">Correction Factor</label>
-            <div class="input-group">
-              <input type="tel" class="form-control" id="correctionFactor" placeholder="">
-              <span class="input-group-addon">mg/dL</span>
+            <div class="form-group">
+              <label for="correctionFactor">Correction Factor</label>
+              <div class="input-group">
+                <input type="tel" class="form-control const-input" onblur="storeConst()" id="correctionFactor" placeholder="">
+                <span class="input-group-addon">mg/dL</span>
+              </div>
             </div>
-          </div>
 
-          <div class="form-group">
-            <label for="insulinCarbRatio">Insulin-To-Carb Ratio</label>
-            <div class="input-group">
-              <input type="number" class="form-control" id="insulinCarbRatio" placeholder="">
-              <span class="input-group-addon">g</span>
+            <div class="form-group">
+              <label for="insulinCarbRatio">Insulin-To-Carb Ratio</label>
+              <div class="input-group">
+                <input type="number" class="form-control const-input" onblur="storeConst()" id="insulinCarbRatio" placeholder="">
+                <span class="input-group-addon">g</span>
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <button type="button" class="btn btn-default" aria-label="Update Constants" onclick="storeValues()">Update</button>
           </div>
         </form>
       </div>
-    </div>
+
     <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
